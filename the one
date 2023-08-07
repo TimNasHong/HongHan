@@ -1,1 +1,62 @@
+2023.8.7
+//main
+public class zhu {
+    public static void main(String[] args) {
+       Outer a=new Outer();
+       a.show();
+       a.out2();
+       a.method();
+       Outer.Iner2 c=new Outer().new Iner2();
+       c.out();
+
+    }
+}
+//接口
+public interface Inter {
+    void outPut();
+}
+
+//outer类
+public class Outer {
+    private String name="lishimin";
+//1.匿名内部类
+    public void show()
+    {
+        System.out.println("内部类");
+        new Inter(){
+            public void outPut(){
+                System.out.println("匿名内部类");
+            }
+        }.outPut();
+    }
+//2.成员内部类，私人
+    private class Iner{
+        public void out(){
+            System.out.println("1");
+            System.out.println(name);
+        }
+ }
+//3.成员内部类，公开
+    public class Iner2{
+        public void out(){
+            System.out.println("2");
+            System.out.println(name);
+        }
+    }
+    public void out2(){
+        Iner a=new Iner();
+        a.out();
+    }
+//4.局部内部类
+    public void method(){
+        class way{
+            public void output(){
+                System.out.println("this is a way");
+            }
+        }
+        way d=new way();
+        d.output();
+    }
+
+}
 
