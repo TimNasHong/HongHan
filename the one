@@ -105,5 +105,15 @@ Date s=new Date();
 System.out.println(s);
 long t=System.currentTimeMillis();//System.currentTimeMillis()1970距今的毫秒值
 s.setTime(t);
-------------------------------------------------------------------------------------------------------------------------------------------------------------
 System.out.println(s);
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Date-->String
+Date a=new Date();
+SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd- HH:mm:ss");
+String d=sdf.format(a);
+System.out.println(d);
+//String-->Date
+String t="2023-8-8 20:35:00";
+Date dd=sdf.parse(t);
+System.out.println(dd);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
