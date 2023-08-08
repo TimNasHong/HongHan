@@ -130,3 +130,17 @@ Calendar rightnow=Calendar.getInstance();
         int day=sdf2.get(Calendar.DATE);
         System.out.println(day);
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+//异常检测
+public static void main(String[] args) throws ParseException {
+       System.out.println("start");
+        method();
+        System.out.println("end");
+}
+public static void method(){
+try{
+    int []arr={1,2,3};
+    System.out.println(arr[3]);
+}
+catch(ArrayIndexOutOfBoundsException a){
+    System.out.println("超过数组索引");
+}
