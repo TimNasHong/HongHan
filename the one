@@ -75,3 +75,35 @@ int f=1000;
 String v=String.valueOf(f);
 System.out.println(v);
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+//字符串转换成数组，排序后转换成字符串
+//String--->int--->StringBuilder--->String
+String a="95 12 45 63 11 20";
+       String[] arr=a.split(" ");
+       int []d=new int[arr.length];
+//String--->int
+       for(int i=0;i<arr.length;i++)
+       {
+           d[i]=Integer.parseInt(arr[i]);
+       }
+//排序
+        Arrays.sort(d);
+        StringBuilder e=new StringBuilder();
+//int--->StringBuilder
+        for(int i=0;i<arr.length;i++)
+        {
+            if(i==arr.length-1)
+                e.append(d[i]);
+            else
+                e.append(d[i]).append(" ");
+        }
+//StringBuilder--->String
+        String v=e.toString();
+        System.out.println(v);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+//获取时间
+Date s=new Date();
+System.out.println(s);
+long t=System.currentTimeMillis();//System.currentTimeMillis()1970距今的毫秒值
+s.setTime(t);
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+System.out.println(s);
