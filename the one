@@ -117,3 +117,16 @@ String t="2023-8-8 20:35:00";
 Date dd=sdf.parse(t);
 System.out.println(dd);
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+Calendar rightnow=Calendar.getInstance();
+        System.out.println(rightnow);
+//------------------------------------------
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("亲输入年份");
+        int date=scanner.nextInt();
+//求二月天
+        Calendar sdf2=Calendar.getInstance();
+        sdf2.set(date,2,1);
+        sdf2.add(Calendar.DATE,-1);
+        int day=sdf2.get(Calendar.DATE);
+        System.out.println(day);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
