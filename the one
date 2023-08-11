@@ -155,3 +155,39 @@ Collection<String>a=new ArrayList<String>();
             String s=it.next();
             System.out.println(s);
         }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+public class Student implements Comparable<Student>{
+...................................
+@Override//自然排序，comparable
+    public int compareTo(Student s) {
+       int a=this.age-s.getAge();
+
+        int num=a==0?this.name.compareTo(s.name):a;
+        return num;
+        //return 0输出一个
+        //return 1;//正序输出
+        //return -1;//逆序输出
+    }
+}
+public class zhu {
+    public static void main(String[] args){
+       TreeSet<Student>a=new TreeSet<Student>(new Comparator<Student>() {
+//比较器排序，comparator
+           @Override
+           public int compare(Student o1, Student o2) {
+               int a=o1.getAge()-o2.getAge();
+               int num=a==0?o1.getName().compareTo(o2.getName()):a;
+               return num;
+           }
+       });
+       Student s=new Student("qwe",18);
+       Student s1=new Student("asd",13);
+       Student s2=new Student("zxc",14);
+       a.add(s);
+       a.add(s1);
+       a.add(s2);
+       for(Student c: a)
+       {
+           System.out.println(c.getAge()+c.getName());
+       }
+ }
