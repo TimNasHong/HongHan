@@ -195,3 +195,16 @@ public class zhu {
 List<String>list=Arrays.alist("...","...","...")//返回指定数组支持的固定大小
 List<String>list=List.of("...","...","...")//元素不可变的列表
 Set<String>set=Set.of("...","...","...")//元素不可变的集合
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Map<String,String>set=new HashMap<String,String>();
+       set.put("qwe","rty");
+       set.put("asd","fgh");
+       set.put("zxc","vbn");
+       Set<String>a=set.keySet();//keySet()获取键的集合
+       for(String s:a){
+           System.out.println(s);
+       }
+       Collection<String>c=set.values();//Collection<> values()获取值的集合
+       for(String k:c)
+           System.out.println(k);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
