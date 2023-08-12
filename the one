@@ -208,3 +208,11 @@ Set<String>set=Set.of("...","...","...")//元素不可变的集合
        for(String k:c)
            System.out.println(k);
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+//Map.Entry获取键对
+Set<Map.Entry<String,String>> fg=set.entrySet();
+       for(Map.Entry<String,String> d:fg)
+       {
+           String q=d.getKey();
+           String w=d.getValue();
+           System.out.println(q+","+w);
+       }
