@@ -270,3 +270,45 @@ ArrayList<HashMap<String,String>>list=new ArrayList<HashMap<String,String>>();
                 System.out.println(dll);
             }
         }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Scanner scanner=new Scanner(System.in);
+        System.out.println("请输入");
+ String line=scanner.nextLine();
+ TreeMap<Character,Integer>map=new TreeMap<Character,Integer>();
+ for(int i=0;i<line.length();i++)
+ {
+     char key=line.charAt(i);
+     Integer value=map.get(key);
+     if(value==null)
+     {
+         map.put(key,1);
+     }
+     else
+     {
+         value++;
+         map.put(key,value);
+     }
+ }
+ StringBuilder sb=new StringBuilder();
+ Set<Character>h=map.keySet();
+ for(Character c:h)
+ {
+     Integer w=map.get(c);
+     sb.append(c).append("(").append(w).append(")");
+ }
+ String b=sb.toString();
+        System.out.println(b);
+
+
+
+
+    }
+    public static void method()throws ArrayIndexOutOfBoundsException{
+        int []arr={1,2,3};
+        System.out.println(arr[3]);
+    }
+    public static Date tos (String date)throws ParseException {
+        SimpleDateFormat a=new SimpleDateFormat("yyyyMMdd");
+        Date s=a.parse(date);
+        return s;
+    }
