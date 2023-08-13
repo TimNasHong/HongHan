@@ -242,3 +242,31 @@ ArrayList<HashMap<String,String>>list=new ArrayList<HashMap<String,String>>();
              System.out.println(key+","+h);
          }
      }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+  HashMap<ArrayList<String>,ArrayList<String>> hashMap=new HashMap<ArrayList<String>,ArrayList<String>>();
+   ArrayList<String>name1=new ArrayList<String>();
+   ArrayList<String>age1=new ArrayList<String>();
+   name1.add("qwe");
+   age1.add("11");
+        ArrayList<String>name2=new ArrayList<String>();
+        ArrayList<String>age2=new ArrayList<String>();
+        name2.add("ASD");
+        age2.add("45");
+        ArrayList<String>name3=new ArrayList<String>();
+        ArrayList<String>age3=new ArrayList<String>();
+        name3.add("ZXC");
+        age3.add("47");
+        hashMap.put(name1,age1);
+        hashMap.put(name2,age2);
+        hashMap.put(name3,age3);
+        Set<ArrayList<String>>hm=hashMap.keySet();
+        for(ArrayList<String> all:hm)
+        {
+            ArrayList<String> a= hashMap.get(all);
+            System.out.println(all);
+            for(String dll:a)
+            {
+
+                System.out.println(dll);
+            }
+        }
