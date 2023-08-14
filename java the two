@@ -103,3 +103,6 @@ HashMap<Integer,String>map=new HashMap<Integer,String>();
         System.out.println();
     }
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+FileOutStream file=new FileOutStream("C:\\javase\\bbc.txt");
+file.write(int);
+file.close();
