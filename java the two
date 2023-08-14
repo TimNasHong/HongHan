@@ -1,1 +1,27 @@
+ //isDirectory()是否为目录 isFile()是否为文件 exists()是否存在 getAbsolutePath() getPath() getName()
+        File f1=new File("C:\\javademo\\javademo.txt");
+        System.out.println(f1.createNewFile());
+        File f2=new File("C:\\javademo\\JavaSE");
+        System.out.println(f2.mkdir());
+        File f3=new File("C:\\javademo\\JavaSE\\SE\\dd");
+        System.out.println(f3.mkdirs());
+        File f4=new File("C:\\javademo\\javademo2.txt");
+        System.out.println(f4.createNewFile());
+        System.out.println(f4.isFile());
+        System.out.println(f4.getName());
+        System.out.println(f4.isDirectory());
+       File f5=new File("C:\\javademo");
+       String[]l=f5.list();
+       for(String s:l)
+       {
+           System.out.println(s);
+       }
+       File[]l2=f5.listFiles();
+       for(File f:l2)
+       {
+           if(f.isFile())
+           {
+               System.out.println(f.getName());
+           }
+       }
 
