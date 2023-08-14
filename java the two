@@ -25,3 +25,81 @@
            }
        }
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+//文件递归
+public static void getFile(File f){
+        File[]list=f.listFiles();
+        if(list!=null) {
+            for (File s : list)
+            {
+               if(s.isDirectory())
+               {
+                   getFile(s);
+               }
+               else {
+                   System.out.println(s.getAbsolutePath());
+               }
+
+            }
+        }
+
+    }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+//斗地主
+HashMap<Integer,String>map=new HashMap<Integer,String>();
+       String[]huase={"♠","♦","🖤","♣"};
+       String[]number={"3","4","5","6","7","8","9","10","J","Q","K","A","2"};
+       ArrayList<Integer>o=new ArrayList<Integer>();
+       int index=0;
+       for(String s:number)
+       {
+           for(String b:huase)
+           {
+               map.put(index,b+s);
+               o.add(index);
+               index++;
+           }
+       }
+       map.put(index,"KING");
+       o.add(index);
+       index++;
+       map.put(index,"king");
+       o.add(index);
+       Collections.shuffle(o);
+       TreeSet<Integer>one=new TreeSet<Integer>();
+        TreeSet<Integer>two=new TreeSet<Integer>();
+        TreeSet<Integer>three=new TreeSet<Integer>();
+        TreeSet<Integer>dp=new TreeSet<Integer>();
+        for(int i=0;i<o.size();i++)
+        {
+            int x=o.get(i);
+            if(i>=o.size()-3)
+            {
+                dp.add(x);
+            } else if (i%3==0) {
+                one.add(x);
+                
+            } else if (i%3==1) {
+                two.add(x);
+
+            } else if (i%3==2) {
+                three.add(x);
+
+            }
+        }
+        fp("one",one,map);
+        fp("two",two,map);
+        fp("three",three,map);
+        fp("dp",dp,map);
+
+//发牌
+ public static void fp(String name,TreeSet<Integer>a,HashMap<Integer,String>h)
+    {
+        System.out.println(name+":");
+        for(Integer t:a){
+            String d=h.get(t);
+            System.out.print(d+" ");
+        }
+        System.out.println();
+    }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
