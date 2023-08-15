@@ -106,3 +106,19 @@ HashMap<Integer,String>map=new HashMap<Integer,String>();
 FileOutStream file=new FileOutStream("C:\\javase\\bbc.txt");
 file.write(int);
 file.close();
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ FileInputStream f=new FileInputStream("C:\\javademo\\th.jpg");
+       FileOutputStream d=new FileOutputStream("C:\\javademo\\th2.jpg");
+       /*int by;
+       while((by=f.read())!=-1)
+       {System.out.print((char)by);
+           d.write(by);
+       }*/
+       byte[]b=new byte[1024];
+       int s;
+       while((s=f.read(b))!=-1)
+       {
+           d.write(b,0,s);
+       }
+       d.close();
+       f.close();
