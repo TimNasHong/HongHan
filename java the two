@@ -122,3 +122,23 @@ file.close();
        }
        d.close();
        f.close();
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ BufferedWriter w=new BufferedWriter(new FileWriter("C:\\Users\\HAN\\untitled2\\src\\new2.txt"));
+      ArrayList<Student>s=new ArrayList<Student>();
+      Student s1=new Student("qwe",12);
+      Student s2=new Student("asd",14);
+      Student s3=new Student("zxc",18);
+      Student s4=new Student("tyu",45);
+      s.add(s1);
+      s.add(s2);
+      s.add(s3);
+      s.add(s4);
+      for(Student a:s)
+      {
+          StringBuilder builder=new StringBuilder();
+          builder.append(a.getName()).append(",").append(a.getAge()).append(" ");
+          w.write(builder.toString());
+          w.newLine();
+          w.flush();
+      }
+      w.close();
