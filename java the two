@@ -142,3 +142,37 @@ file.close();
           w.flush();
       }
       w.close();
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+//单级文件
+public class zhu {
+    public static void main(String[] args) throws IOException {
+     File a=new File("C:\\javademo");
+     String c=a.getName();
+     File b=new File("untitled3",c);
+     if(!b.exists())
+     {
+         b.mkdir();
+     }
+
+     File[]file=a.listFiles();
+     for(File s:file)
+     {
+         String q=s.getName();
+         File pingjie=new File(b,q);
+         copy(pingjie,s);
+     }
+    }
+
+    private static void copy(File pingjie,File s) throws IOException {
+        BufferedInputStream one=new BufferedInputStream(new FileInputStream(s));
+        BufferedOutputStream two=new BufferedOutputStream(new FileOutputStream(pingjie));
+        byte[]f=new byte[1024];
+        int len;
+        while((len=one.read(f))!=-1)
+        {
+            two.write(f,0,len);
+
+        }
+        one.close();
+        two.close();
+    }
