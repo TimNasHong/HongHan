@@ -176,3 +176,45 @@ public class zhu {
         one.close();
         two.close();
     }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+\\复制多级文件
+public class zhu {
+    public static void main(String[] args) throws IOException {
+    File java=new File("C:\\javademo");
+    File newfile=new File("C:\\javademo2");
+    copyFile(java,newfile);
+    }
+
+    private static void copyFile(File java, File newfile) throws IOException {
+        if(java.isDirectory())
+        {
+            String javafile=java.getName();
+            File new2file=new File(newfile,javafile);
+            if(!new2file.exists()){
+                new2file.mkdir();
+            }
+            File[]arrayFile=java.listFiles();
+            for(File f:arrayFile)
+            {
+                copyFile(f,new2file);
+            }
+        }else
+        {
+            File secordfile=new File(newfile,java.getName());
+            copy(secordfile,java);
+        }
+    }
+
+    private static void copy(File pingjie,File s) throws IOException {
+        BufferedInputStream one=new BufferedInputStream(new FileInputStream(s));
+        BufferedOutputStream two=new BufferedOutputStream(new FileOutputStream(pingjie));
+        byte[]f=new byte[1024];
+        int len;
+        while((len=one.read(f))!=-1)
+        {
+            two.write(f,0,len);
+
+        }
+        one.close();
+        two.close();
+    }
