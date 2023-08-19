@@ -219,7 +219,9 @@ public class zhu {
         two.close();
     }
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
- public static void main(String[] args) throws IOException {
+//PrintStream标准输出流
+//InputStream标准输入流
+public static void main(String[] args) throws IOException {
     BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
     String line=in.readLine();
         System.out.println(line);
