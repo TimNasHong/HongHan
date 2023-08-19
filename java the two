@@ -218,3 +218,12 @@ public class zhu {
         one.close();
         two.close();
     }
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ public static void main(String[] args) throws IOException {
+    BufferedReader in=new BufferedReader(new InputStreamReader(System.in));
+    String line=in.readLine();
+        System.out.println(line);
+        System.out.println(Integer.parseInt(in.readLine()));
+    PrintStream s=System.out;
+    s.println("45");
+    }
