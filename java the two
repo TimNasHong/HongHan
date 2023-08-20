@@ -229,3 +229,70 @@ public static void main(String[] args) throws IOException {
     PrintStream s=System.out;
     s.println("45");
     }
+
+
+PrintWriter a=new PrintWriter(new FileWriter("C:\\javademo\\bbc.txt"),false);
+   a.print(45);
+   a.println(100);
+   a.println("asd");
+   a.println("sdvhjvd");
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+//对象序列化问题
+public class Student extends Object implements Serializable {
+    private static final long serialVersionUID = 42L;
+    String name;
+
+    int age;
+
+    public Student() {
+    }
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
+}
+
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\javademo\\bbc.txt"));
+        Student s=new Student("lll",14);
+          oos.writeObject(s);
+        Student s1=new Student("qqq",16);
+        Student s2=new Student("aaa",18);
+        oos.writeObject(s1);
+         oos.writeObject(s2);
+         oos.close();
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("C:\\javademo\\bbc.txt"));
+        Object obj = ois.readObject();
+        Student a = (Student) obj;
+        Object obj2 = ois.readObject();
+        Student b = (Student) obj2;
+        System.out.println(a.getName() + "," + a.getAge());
+        System.out.println(b.getName() + "," + b.getAge());
+        ois.close();
+    }
