@@ -240,9 +240,9 @@ PrintWriter a=new PrintWriter(new FileWriter("C:\\javademo\\bbc.txt"),false);
 //对象序列化问题
 public class Student extends Object implements Serializable {
     private static final long serialVersionUID = 42L;
-    String name;
+    pruvate String name;
 
-    int age;
+    private int transient age;//transient使age不被序列化
 
     public Student() {
     }
