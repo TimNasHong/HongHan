@@ -333,3 +333,28 @@ public static void main(String[] args) throws IOException, ClassNotFoundExceptio
         pro.store(fw,null);
         fw.close();
     }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ FileReader fr=new FileReader("C:\\javademo\\bbc.txt");
+        Properties pro=new Properties();
+        pro.load(fr);
+        fr.close();
+
+        int count=Integer.parseInt(pro.getProperty("count"));
+        while(count<=3)
+        {
+            GussNumber.Start();
+            count++;
+            if(count>3)
+            {
+                System.out.println("充值");
+
+            }else {
+
+                String a=String.valueOf(count);
+                pro.setProperty("count",a);
+                FileWriter fw=new FileWriter("C:\\javademo\\bbc.txt");
+                pro.store(fw,null);
+                fw.close();
+            }
+
+        }
