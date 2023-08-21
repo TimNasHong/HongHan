@@ -358,3 +358,27 @@ public static void main(String[] args) throws IOException, ClassNotFoundExceptio
             }
 
         }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+public class MyThread extends Thread {
+    public MyThread(){}
+    public MyThread(String name){
+        super(name);
+    }
+    @Override
+    public void run() {
+        for(int i=0;i<100;i++)
+            System.out.print(getName()+":"+i+" ");
+    }
+}
+
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+
+        MyThread a = new MyThread("number one");
+        a.start();
+        MyThread b = new MyThread("number two");
+        b.start();
+
+    }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
