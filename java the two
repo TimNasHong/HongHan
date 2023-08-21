@@ -309,3 +309,27 @@ public class zhu {
        }
         System.out.println(pro);
     }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+//properties和io流的结合用法
+public static void main(String[] args) throws IOException, ClassNotFoundException {
+        myStore();
+        myLoad();
+    }
+
+    private static void myLoad() throws IOException {
+        FileReader fr=new FileReader("C:\\javademo\\bbc.txt");
+        Properties pro=new Properties();
+        pro.load(fr);
+        fr.close();
+        System.out.println(pro);
+    }
+
+    private static void myStore() throws IOException{
+        FileWriter fw=new FileWriter("C:\\javademo\\bbc.txt");
+        Properties pro=new Properties();
+        pro.setProperty("asd","12");
+        pro.setProperty("zxc","45");
+        pro.setProperty("wqe","98");
+        pro.store(fw,null);
+        fw.close();
+    }
