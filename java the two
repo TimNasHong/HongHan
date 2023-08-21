@@ -296,3 +296,16 @@ public class zhu {
         System.out.println(b.getName() + "," + b.getAge());
         ois.close();
     }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Properties pro=new Properties();
+        pro.setProperty("qwe","72");
+        pro.setProperty("asd","45");
+        pro.setProperty("zxc","85");
+       Set<String>a=pro.stringPropertyNames();
+       for(String key:a)
+       {
+           System.out.println(key+","+pro.getProperty(key));
+       }
+        System.out.println(pro);
+    }
