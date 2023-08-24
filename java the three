@@ -186,3 +186,36 @@ public class othermain {
 
     }
 }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+        BufferedReader b = new BufferedReader(new FileReader("C:\\javademo\\bbc.txt"));
+        Socket s = new Socket("LAPTOP-331NMUN6", 2500);
+        //获取输出流
+        BufferedWriter bd = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        String s1;
+        //输入数据
+        while ((s1 = b.readLine()) != null) {
+            bd.write(s1);
+            bd.newLine();
+            bd.flush();
+        }
+        b.close();
+        bd.close();
+        s.close();
+    }
+}
+
+public class othermain {
+    public static void main(String[] args) throws IOException {
+        ServerSocket ss = new ServerSocket(2500);
+        Socket s = ss.accept();
+        BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        String g;
+        while ((g = br.readLine()) != null) {
+            System.out.println(g);
+        }
+    }
+}
