@@ -48,3 +48,73 @@ public class MyRunable implements Runnable {
         }
     }
 }
+---------------------------------------------------------------------------------------------------------------------------------------------
+//@
+public class Box  {
+    private int milk;
+    private boolean isEmpty=false;//表示牛奶箱中有牛奶
+    public synchronized void get(){
+
+        if(!isEmpty)
+        {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        System.out.println("用户拿出"+this.milk+"瓶奶");
+        isEmpty=false;
+        notifyAll();
+    }
+    public synchronized void put(int milk){
+        if(isEmpty){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        this.milk=milk;
+        System.out.println("工作人员放入"+this.milk+"瓶奶");
+        isEmpty=true;
+        notifyAll();
+    }
+
+}
+public class Producer implements Runnable{
+    private  Box b;
+    public Producer(Box b){
+        this.b=b;
+    }
+    public void run(){
+        for(int i=1;i<=5;i++)
+        {
+            b.put(i);
+        }
+    }
+}
+public class Cusstomer implements Runnable{
+    private Box b;
+    public Cusstomer(Box b){
+        this.b=b;
+    }
+
+    @Override
+    public void run() {
+        while(true)
+        {
+            b.get();
+        }
+
+    }
+}public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Box b=new Box();
+        Producer p=new Producer(b);
+        Cusstomer c=new Cusstomer(b);
+        Thread p1=new Thread(p);
+        Thread c1=new Thread(c);
+        p1.start();
+        c1.start();
+    }
