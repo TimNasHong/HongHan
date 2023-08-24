@@ -126,3 +126,26 @@ public static void main(String[] args) throws IOException, ClassNotFoundExceptio
         String adress=name.getHostAddress();
         System.out.println(ipname+","+adress);
     }
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//发送端
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        DatagramSocket ds=new DatagramSocket();
+        byte[]datas="this my computer!".getBytes();
+        DatagramPacket dp=new DatagramPacket(datas,datas.length,InetAddress.getByName("LAPTOP-331NMUN6"),123);
+        ds.send(dp);
+        ds.close();
+    }
+}
+//接收端
+public class othermain {
+    public static void main(String[] args) throws IOException {
+        DatagramSocket ds=new DatagramSocket(123);
+        byte[]newdata=new byte[1024];
+        DatagramPacket dp=new DatagramPacket(newdata,newdata.length);
+        ds.receive(dp);
+        String s=new String(dp.getData(),0,dp.getLength());
+        System.out.println(s);
+        ds.close();
+    }
+}
