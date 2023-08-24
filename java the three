@@ -118,3 +118,11 @@ public class Cusstomer implements Runnable{
         p1.start();
         c1.start();
     }
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//获取ip地址和主机名
+public static void main(String[] args) throws IOException, ClassNotFoundException {
+        InetAddress name=InetAddress.getByName("LAPTOP-331NMUN6");
+        String ipname=name.getHostName();
+        String adress=name.getHostAddress();
+        System.out.println(ipname+","+adress);
+    }
