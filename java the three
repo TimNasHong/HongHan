@@ -149,3 +149,40 @@ public class othermain {
         ds.close();
     }
 }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//发送端
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+       DatagramSocket ds=new DatagramSocket();
+        System.out.println("请输入:");
+       BufferedReader bw=new BufferedReader(new InputStreamReader(System.in));
+       byte[]data=new byte[1024];
+       String line;
+       while((line=bw.readLine())!=null)
+       {
+           data=line.getBytes();
+           DatagramPacket dp=new DatagramPacket(data,data.length,InetAddress.getByName("LAPTOP-331NMUN6"),1234);
+           ds.send(dp);
+
+       }
+       ds.close();
+
+    }
+}
+//接收端
+public class othermain {
+    public static void main(String[] args) throws IOException {
+        DatagramSocket da=new DatagramSocket(1234);
+        while(true)
+        {
+            byte[]data=new byte[1024];
+            DatagramPacket dp = new DatagramPacket(data,data.length);
+            da.receive(dp);
+
+            String se=new String(dp.getData(),0,dp.getLength());
+            System.out.println(se);
+
+        }
+
+    }
+}
