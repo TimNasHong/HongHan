@@ -219,3 +219,45 @@ public class othermain {
         }
     }
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+//服务器
+public class othermain {
+    public static void main(String[] args) throws IOException {
+        ServerSocket ss = new ServerSocket(2500);
+        Socket s = ss.accept();
+        BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        String g;
+        while ((g = br.readLine()) != null) {
+            System.out.println(g);
+        }
+        s.shutdownInput();
+        BufferedWriter brservic = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        String sss = "已上传";
+        brservic.write(sss);
+        brservic.close();
+        br.close();
+        s.close();
+    }
+}
+//客户端
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        Socket s = new Socket("LAPTOP-331NMUN6", 2500);
+        BufferedReader br = new BufferedReader(new FileReader("C:\\javademo\\bbc.txt"));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        String data;
+        while ((data = br.readLine()) != null) {
+            bw.write(data);
+            bw.newLine();
+            bw.flush();
+        }
+        s.shutdownOutput();
+        BufferedReader bwservic = new BufferedReader(new InputStreamReader(s.getInputStream()));
+        String over = bwservic.readLine();
+        System.out.println("数据" + over);
+        bwservic.close();
+        bw.close();
+        br.close();
+        s.close();
+    }
+}
