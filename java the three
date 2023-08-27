@@ -286,3 +286,16 @@ public class zhu {
         con1.andThen(con2).accept(str);
     }
 }
+//Predicate型接口
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        String s="qweasdzxc";
+        boolean a=predict(s,str->str.length()>5,str->str.length()<15);
+        System.out.println(a);
+    }
+    private  static  boolean predict(String s, Predicate<String>p1,Predicate<String>p2){
+        return p1.and(p2).test(s);
+        //return p1.or(p2).test(s);
+        //return p1.negate(p2).test(s);
+        }
+}
