@@ -274,3 +274,15 @@ public class zhu {
     }
 }
 //Consumer型接口
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        String[] s = {"qwe,12", "asd,45", "zxc,88"};
+        getString(s,str-> System.out.println(new StringBuilder(str).reverse().toString()),str-> System.out.println(str));
+        System.out.println("-------------");
+        getString(s,str-> System.out.print("姓名"+str.split(",")[0]),str-> System.out.println(",年龄"+Integer.parseInt(str.split(",")[1])));
+    }
+    private static  void getString(String[]s, Consumer<String>con1,Consumer<String>con2){
+        for(String str:s)
+        con1.andThen(con2).accept(str);
+    }
+}
