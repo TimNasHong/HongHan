@@ -299,3 +299,18 @@ public class zhu {
         //return p1.negate(p2).test(s);
         }
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+      Class<Student>c=Student.class;
+        System.out.println(c);
+
+        Student s=new Student();
+        Class<?extends Student>c2=s.getClass();
+        System.out.println(c2);
+
+        Class<?>c3=Class.forName("Student");
+        System.out.println(c3);
+
+    }
+}
