@@ -26,3 +26,55 @@ public class zhu {
 
     }
 }
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+
+        Class<?>c=Class.forName("Student");
+        Constructor<?>[]cons=c.getDeclaredConstructors();
+        for(Constructor<?>c1:cons){
+            System.out.println(c1);
+        }
+        System.out.println("---------------");
+        Constructor<?>cons1=c.getConstructor();
+            System.out.println(cons1);
+        System.out.println("---------------");
+        Object obj = cons1.newInstance();
+        System.out.println(obj);
+        System.out.println("---------------");
+        Constructor<?>cons2=c.getConstructor(String.class,int.class);
+        Object obj1 = cons2.newInstance("qwe",12);
+        System.out.println(obj1);
+        System.out.println("---------------");
+        Constructor<?>con3=c.getDeclaredConstructor(int .class);
+        con3.setAccessible(true);
+        Object obj3 = con3.newInstance(18);
+        System.out.println(obj3);
+        System.out.println("---------------");
+        Constructor<?>con4=c.getDeclaredConstructor();
+        Field ageField=c.getDeclaredField("age");
+        ageField.setAccessible(true);
+        Object obj4 = con4.newInstance();
+        ageField.set(obj4,18);
+        Field nameField=c.getDeclaredField("name");
+        nameField.setAccessible(true);
+        nameField.set(obj4,"qwe");
+        System.out.println(obj4);
+        System.out.println("---------------");
+        Constructor<?>con5=c.getConstructor();
+        Object obj5 = con5.newInstance();
+       Method m=c.getDeclaredMethod("out",String.class);
+       m.setAccessible(true);
+       m.invoke(obj5,"asd");
+        System.out.println("---------------");
+        ArrayList<Integer>arr=new ArrayList<Integer>();
+        Class<?extends ArrayList>arrClass=arr.getClass();
+        Method arrMethod=arrClass.getMethod("add",Object.class);
+        arrMethod.invoke(arr,"qew");
+        arrMethod.invoke(arr,"qwe");
+        arrMethod.invoke(arr,"qsd");
+        arrMethod.invoke(arr,"asd");
+        System.out.println(arr);
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
