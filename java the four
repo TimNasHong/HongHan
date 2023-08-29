@@ -26,6 +26,25 @@ public class zhu {
 
     }
 }
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+//反射运行配置文件
+public class zhu {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        FileReader br = new FileReader("C:\\javademo\\bbc.txt");
+        Properties pro = new Properties();
+        pro.load(br);
+        br.close();
+        String className = pro.getProperty("className");
+        String methodName = pro.getProperty("method");
+        Class<?> c = Class.forName(className);
+        Constructor<?> con = c.getDeclaredConstructor();
+        Object obj = con.newInstance();
+        Method m = c.getDeclaredMethod(methodName, String.class);
+        m.setAccessible(true);
+        m.invoke(obj, "qwe");
+    }
+}
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 public class zhu {
     public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
