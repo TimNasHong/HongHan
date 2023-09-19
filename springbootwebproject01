@@ -1,0 +1,19 @@
+//请求处理类
+@RestController
+public class HelloController {
+
+//@RequestMapping("/ getparameter")
+//      public String getparameter(String name,Integer age){
+//
+//    System.out.println(name+":"+age);
+//    return "OK";
+//}
+//springboot方法
+    @RequestMapping("/ getparameter")
+    public String getparameter(@RequestParam(name="name"，require=true/false) String username, Integer age){
+
+        System.out.println(username+":"+age);
+        return "OK";
+    }
+@RequestParam方法参数与请求参数不一致，通过注解完成映射，require=true
+}
