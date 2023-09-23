@@ -17,3 +17,65 @@ public class HelloController {
     }
 @RequestParam方法参数与请求参数不一致，通过注解完成映射，require=true
 }
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//三层结构，分层解耦：复用性强，便于维护，利于扩展
+//表层顺序，内层逆序
+controller-->service-->dao
+controller<--service<--dao
+
+dao:获取xml文件的数据
+//EmpDao接口内有public List<Emp> listEmp方法;
+public class EmpDaoA implements EmpDao{
+    @Override
+    public List<Emp> listEmp() {
+        String file=this.getClass().getClassLoader().getResource("emp.xml").getFile();
+        List<Emp> empList= XmlParserUtils.parse(file,Emp.class);
+        return empList;
+    }
+}
+
+service:将获得的数据进行逻辑处理
+//Empservice接口内有public List<Emp> listEmp方法;
+public class EmpServiceA implements EmpService{
+    EmpDao empdao=new EmpDaoA();//面向接口创建
+    @Override
+    public List<Emp> listEmp() {
+        List<Emp>empList=empdao.listEmp();
+        empList.stream().forEach(emp->{
+            String gender=emp.getGender();
+            if("1".equals(gender))
+                emp.setGender("男");
+            else if("2".equals(gender))
+                emp.setGender("女");
+
+
+            String job= emp.getJob();
+            if("1".equals(job))
+                emp.setJob("老师");
+            else if("2".equals(job))
+                emp.setJob("学生");
+            else if ("3".equals(job)) {
+                emp.setJob("校长");
+
+            }
+        });
+        return empList;
+    }
+}
+
+
+controller:接收数据，响应和返回数据
+
+@RestController
+public class EmpController {
+EmpService empService=new EmpServiceA();
+@RequestMapping("/listEmp")
+public Result list(){
+   List<Emp>empList=empService.listEmp();
+
+    return Result.success(empList);
+}
+}
