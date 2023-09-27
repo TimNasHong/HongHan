@@ -71,3 +71,21 @@ select e.name,if(e.gender=1,'男','女') 性别,e.entrydate,d.name from (select*
 select d.name ,d.id ,e.id,e.dept_id from tb_dept d,tb_emp e where d.name='学工部' and e.entrydate between '2001-01-01' and '2020-01-01' and e.dept_id=d.id;
 select e.id,e.name 姓名,e.dept_id 部门编号,d.name 部门 from tb_emp e,tb_dept d  where e.dept_id=d.id;
 
+-- 1. 查询价格低于 10元 的菜品的名称 、价格 及其 菜品的分类名称 .
+select d.name,d.price,c.name  from dish d,category c where d.price<10 and c.id=d.category_id;
+
+-- 2. 查询所有价格在 10元(含)到50元(含)之间 且 状态为'起售'的菜品名称、价格 及其 菜品的分类名称 (即使菜品没有分类 , 也需要将菜品查询出来).
+select d.name '菜品名称',d.price '菜品价格',c.name '菜品分类' from dish d ,category c where d.price between 10 and 50 and d.status=1 and d.category_id=c.id;
+
+-- 3. 查询每个分类下最贵的菜品, 展示出分类的名称、最贵的菜品的价格 .
+select c.name '菜品', max(d.price) '最贵' from dish d,category c where d.category_id=c.id group by c.name;
+
+-- 4. 查询各个分类下 状态为 '起售' , 并且 该分类下菜品总数量大于等于3 的 分类名称 .
+select c.name,count(*)  from dish d, category c where d.category_id=c.id and  d.status=1 group by c.name having count(*)>=3;
+
+-- 5. 查询出 "商务套餐A" 中包含了哪些菜品 （展示出套餐名称、价格, 包含的菜品名称、价格、份数）.
+select s.name,s.price,d.name,d.price,sd.copies  from dish d,setmeal s,setmeal_dish sd where d.id=sd.dish_id and s.id=sd.setmeal_id and s.name='商务套餐A';
+
+-- 6. 查询出低于菜品平均价格的菜品信息 (展示出菜品名称、菜品价格).
+select d.name,d.price from dish d where d.price<(select avg(price) from dish);
+select avg(price) from dish
