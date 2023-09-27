@@ -48,3 +48,26 @@ create table tb_emp02 (
                         create_time datetime not null comment '创建时间',
                         update_time datetime not null comment '修改时间'
 ) comment '员工表';
+
+
+
+select *from tb_emp;
+select *from tb_dept;
+select *from tb_dept,tb_emp;
+select*from tb_emp,tb_dept where tb_emp.dept_id=tb_dept.id;
+ -- 内连接
+select e.name ,d.name from tb_emp e,tb_dept d where e.dept_id=d.id;
+select e.name ,d.name from tb_emp e inner join tb_dept d on e.dept_id=d.id;
+ -- 外连接
+-- 左外连接
+select e.name,d.name from tb_emp e left join tb_dept d on e.dept_id = d.id;
+-- 右外连接
+select e.name,d.name from tb_emp e right join tb_dept d on e.dept_id=d.id;
+select tb_emp.name  from tb_emp where dept_id=(select id from tb_dept where name='学工部');
+select *from tb_emp where dept_id in (select id from tb_dept where name='学工部' or name='人事部');
+select*from tb_emp where (entrydate,job)=(select entrydate ,job from tb_emp where name='韦一笑' );
+select e.*,d.name 部门 from (select*from tb_emp where entrydate>'2001-01-01') e,tb_dept d where e.dept_id=d.id;
+select e.name,if(e.gender=1,'男','女') 性别,e.entrydate,d.name from (select*from tb_emp where name like'___' and entrydate between '2001-01-01' and '2020-01-01') e,tb_dept d where e.dept_id=d.id;
+select d.name ,d.id ,e.id,e.dept_id from tb_dept d,tb_emp e where d.name='学工部' and e.entrydate between '2001-01-01' and '2020-01-01' and e.dept_id=d.id;
+select e.id,e.name 姓名,e.dept_id 部门编号,d.name 部门 from tb_emp e,tb_dept d  where e.dept_id=d.id;
+
