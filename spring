@@ -1,0 +1,5 @@
+springBoot起步依赖：maven的依赖传递，spring的依赖配置较冗繁琐
+自动配置：当spring项目启动后，一些配置类和bean对象就会自动存入ioc容器中，不用手动声明
+1.@Import注解导入对象，导入普通类，配置类，ImportSelector接口实现类
+@EnableXXX封装@Import注解
+2.@ComponentScan组件扫描
