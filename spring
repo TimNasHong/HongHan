@@ -3,3 +3,8 @@ springBoot起步依赖：maven的依赖传递，spring的依赖配置较冗繁�
 1.@Import注解导入对象，导入普通类，配置类，ImportSelector接口实现类
 @EnableXXX封装@Import注解
 2.@ComponentScan组件扫描
+3.@Bean
+@ConditionalOnClass判断环境中是否存在对应的字节码文件，才注册到IOC容器中(maven中要存在对应配置)
+,@ConditionalOnMissingBean判断环境中是否存在对应的bean，才注册到IOC容器中(spring项目中要存在对应的bean)
+,@ConditionalOnProperty判断配置文件中是否存在对应属性和值，才注册到IOC容器中(@ConditionalOnProperty(name="name",havingValue="nameValue"))
+sg：@ConditionalOnClass(name="io.jsonwebtoken.Jwts")
