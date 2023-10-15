@@ -1,0 +1,21 @@
+day1:数据库employee配置
+employee实体类  employeeController—>employeeService(employeeServiceImpl)->employeeMapper(Mybatis-Plus)
+<Mybatis-plus>
+Mybatis-puls:LambdaQueryWrapper(查询构造器)
+eg:LambdaQueryWrapper<实体类类型(Employee)> query=new LambdaQueryWrapper<>();
+query.eq(Employee::getUserName,emp.getUserName);
+
+employeeService继承IService
+其中getOne这个是方法返回结果不止一条则会抛出异常，如果想默认取第一条结果，可以给这方法传第二个参数为false
+getOne（）=getOne（true）由于数据库中有些数据存在唯一性，比如id，由此判断是否存在此属性的数据
+判断emp的密码，status是否存在
+用session将数据存入
+通过httpservletrequest.getSession().setAttburite(String s{"employee"},Object o{emp.getId()});
+返回成功R.success(emp);
+
+
+
+employeeService继承IService<Employee>
+employeeMapper继承BaseMapper<Employee>
+empServiceImpl继承ServiceImpl(IService的实现类)<M(mapper类型),T(实现类)>
+
