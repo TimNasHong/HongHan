@@ -19,3 +19,4 @@ employeeService继承IService<Employee>
 employeeMapper继承BaseMapper<Employee>
 empServiceImpl继承ServiceImpl(IService的实现类)<M(mapper类型),T(实现类)>
 
+day2:
